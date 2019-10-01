@@ -3,4 +3,5 @@
 .settings
 genieApplication/__pycache__
 genieLibrary/__pycache__
+genieTypes/__pycache__
 
