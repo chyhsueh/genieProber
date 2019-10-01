@@ -1,0 +1,209 @@
+Device.Ethernet.InterfaceNumberOfEntries	None
+Device.Ethernet.LinkNumberOfEntries	None
+Device.Ethernet.Interface.1.Name	None
+Device.Ethernet.Interface.1.Enable	None
+Device.Ethernet.Interface.1.Status	None
+Device.Ethernet.Interface.1.MACAddress	None
+Device.Ethernet.Interface.1.CurrentBitRate	None
+Device.Ethernet.Interface.1.DuplexMode	None
+Device.Ethernet.Interface.1.Stats.BytesSent	None
+Device.Ethernet.Interface.1.Stats.BytesReceived	None
+Device.Ethernet.Interface.1.Stats.PacketsSent	None
+Device.Ethernet.Interface.1.Stats.PacketsReceived	None
+Device.Ethernet.Interface.1.Stats.ErrorsSent	None
+Device.Ethernet.Interface.1.Stats.ErrorsReceived	None
+Device.Ethernet.Interface.1.Stats.DiscardPacketsSent	None
+Device.Ethernet.Interface.1.Stats.DiscardPacketsReceived	None
+Device.Ethernet.Link.1.Name	None
+Device.Ethernet.Link.1.Enable	None
+Device.Ethernet.Link.1.Status	None
+Device.Ethernet.Link.1.MACAddress	None
+Device.Ethernet.Link.1.PriorityTagging	None
+Device.Ethernet.Link.1.Stats.BytesSent	None
+Device.Ethernet.Link.1.Stats.BytesReceived	None
+Device.Ethernet.Link.1.Stats.PacketsSent	None
+Device.Ethernet.Link.1.Stats.PacketsReceived	None
+Device.Ethernet.Link.1.Stats.ErrorsSent	None
+Device.Ethernet.Link.1.Stats.ErrorsReceived	None
+Device.Ethernet.Link.1.Stats.DiscardPacketsSent	None
+Device.Ethernet.Link.1.Stats.DiscardPacketsReceived	None
+Device.Time.Enable	None
+Device.Time.Status	None
+Device.Time.NTPServer1	None
+Device.Time.NTPServer2	None
+Device.Time.NTPServer3	None
+Device.Time.NTPServer4	None
+Device.Time.NTPServer5	None
+Device.Time.CurrentLocalTime	None
+Device.Time.LocalTimeZone	None
+Device.GatewayInfo.ManufacturerOUI	None
+Device.GatewayInfo.ProductClass	None
+Device.GatewayInfo.SerialNumber	None
+Device.Firewall.Enable	True
+Device.Firewall.Config	Advanced
+Device.Firewall.AdvancedLevel	Firewall.Level.1
+Device.Firewall.Type	Stateful
+Device.Firewall.LevelNumberOfEntries	1
+Device.Firewall.Level.1.Chain	None
+Device.Firewall.Level.1.DefaultLogPolicy	None
+Device.Firewall.Level.1.DefaultPolicy	None
+Device.Firewall.Level.1.Order	None
+Device.Firewall.Chain.1.Rule.1.Alias	Allow-IGMP
+Device.Firewall.Chain.1.Rule.1.Description	
+Device.Firewall.Chain.1.Rule.1.DestInterface	IP.Interface.3
+Device.Firewall.Chain.1.Rule.1.DestPort	
+Device.Firewall.Chain.1.Rule.1.DestPortRangeMax	-1
+Device.Firewall.Chain.1.Rule.1.DSCP	-1
+Device.Firewall.Chain.1.Rule.1.Enable	True
+Device.Firewall.Chain.1.Rule.1.IPVersion	4
+Device.Firewall.Chain.1.Rule.1.Order	1
+Device.Firewall.Chain.1.Rule.1.Protocal	2
+Device.Firewall.Chain.1.Rule.1.SourceIP	
+Device.Firewall.Chain.1.Rule.1.SourceMask	
+Device.Firewall.Chain.1.Rule.1.SourcePort	-1
+Device.Firewall.Chain.1.Rule.1.SourcePortRangeMax	-1
+Device.Firewall.Chain.1.Rule.1.Status	Disabled
+Device.Firewall.Chain.1.Rule.1.Target	ACCEPT
+Device.DHCPv4.Server.Enable	True
+Device.DHCPv4.Server.PoolNumberOfEntries	None
+Device.DHCPv4.Server.Pool.1.Enable	True
+Device.DHCPv4.Server.Pool.1.Status	Enabled
+Device.DHCPv4.Server.Pool.1.Interface	Device.IP.Interface.2.
+Device.DHCPv4.Server.Pool.1.MinAddress	192.168.8.2
+Device.DHCPv4.Server.Pool.1.MaxAddress	192.168.8.202
+Device.DHCPv4.Server.Pool.1.SubnetMask	255.255.255.0
+Device.DHCPv4.Server.Pool.1.DNSServers	
+Device.DHCPv4.Server.Pool.1.DomainName	None
+Device.DHCPv4.Server.Pool.1.IPRouters	192.168.8.1
+Device.DHCPv4.Server.Pool.1.LeaseTime	604800
+Device.ManagementServer.EnableCWMP	None
+Device.ManagementServer.URL	http://10.194.10.139:7547
+Device.ManagementServer.Username	admin
+Device.ManagementServer.Password	
+Device.ManagementServer.PeriodicInformEnable	True
+Device.ManagementServer.PeriodicInformInterval	120
+Device.ManagementServer.PeriodicInformTime	0001-01-01T00:00:00.000Z
+Device.ManagementServer.ConnectionRequestURL	http://10.194.10.159:7547/
+Device.ManagementServer.ConnectionRequestUsername	myusername
+Device.ManagementServer.ConnectionRequestPassword	
+Device.ManagementServer.ParameterKey	
+Device.NAT.PortMapping.1.Enable	None
+Device.NAT.PortMapping.1.Status	None
+Device.NAT.PortMapping.1.Alias	None
+Device.NAT.PortMapping.1.Interface	None
+Device.NAT.PortMapping.1.AllInterfaces	None
+Device.NAT.PortMapping.1.LeaseDuration	None
+Device.NAT.PortMapping.1.RemoteHost	None
+Device.NAT.PortMapping.1.ExternalPort	None
+Device.NAT.PortMapping.1.ExternalPortEndRange	None
+Device.NAT.PortMapping.1.InternalPort	None
+Device.NAT.PortMapping.1.Protocal	None
+Device.NAT.PortMapping.1.InternalClient	None
+Device.NAT.PortMapping.1.Description	None
+Device.WiFi.RadioNumberOfEntries	None
+Device.WiFi.SSIDNumberOfEntries	None
+Device.WiFi.AccessPointNumberOfEntries	None
+Device.WiFi.Reset	None
+Device.WiFi.Radio.1.Enable	True
+Device.WiFi.Radio.1.Status	Down
+Device.WiFi.Radio.1.Name	wifi0
+Device.WiFi.Radio.1.SupportedFrequencyBands	5GHz
+Device.WiFi.Radio.1.OperatingFrequencyBand	5GHz
+Device.WiFi.Radio.1.OperatingStandards	ng
+Device.WiFi.Radio.1.ChannelsInUse	
+Device.WiFi.Radio.1.Channel	
+Device.WiFi.Radio.1.AutoChannelSupported	True
+Device.WiFi.Radio.1.AutoChannelEnable	True
+Device.WiFi.Radio.1.MaxSupportedSSIDs	None
+Device.WiFi.Radio.1.MaxSupportedAssociations	None
+Device.WiFi.Radio.1.FirmwareVersion	None
+Device.WiFi.Radio.1.SupportedOperatingChannelBandwidths	None
+Device.WiFi.Radio.1.OperatingChannelBandwidth	None
+Device.WiFi.Radio.1.CurrentOperatingChannelBandwidth	None
+Device.WiFi.Radio.1.ExtensionChannel	None
+Device.WiFi.Radio.1.GuardInterval	None
+Device.WiFi.Radio.1.TransmitPowerSupported	None
+Device.WiFi.Radio.1.TransmitPower	None
+Device.WiFi.Radio.1.RegulatoryDomain	None
+Device.WiFi.Radio.1.FragmentationThreshold	None
+Device.WiFi.Radio.1.RTSThreshold	None
+Device.WiFi.Radio.1.BeaconPeriod	None
+Device.WiFi.Radio.1.DTIMPeriod	None
+Device.WiFi.Radio.1.PacketAggregationEnable	None
+Device.WiFi.SSID.1.Enable	True
+Device.WiFi.SSID.1.Status	Up
+Device.WiFi.SSID.1.Name	WARNING: Variable 'wifi0' does not exist or is not an array/object
+WARNING: Variable 'interfaces' does not exist or is not an array/object
+Device.WiFi.SSID.1.LowerLayers	Device.WiFi.Radio.1.
+Device.WiFi.SSID.1.SSID	PORTAL_4856
+Device.WiFi.SSID.1.BSSID	None
+Device.WiFi.SSID.1.MACAddress	None
+Device.WiFi.SSID.1.X_IPInterface	Device.IP.Interface.2.
+Device.WiFi.AccessPoint.1.Enable	True
+Device.WiFi.AccessPoint.1.Status	Enabled
+Device.WiFi.AccessPoint.1.SSIDReference	Device.WiFi.SSID.1.
+Device.WiFi.AccessPoint.1.Security.ModesSupported	None,WEP-64,WEP-128,WPA-Personal,WPA2-Personal,WPA-WPA2-Personal,WPA-Enterprise,WPA2-Enterprise,WPA-WPA2-Enterprise
+Device.WiFi.AccessPoint.1.Security.ModeEnabled	WPA2-Personal
+Device.WiFi.AccessPoint.1.Security.WEPKey	
+Device.WiFi.AccessPoint.1.Security.PreSharedKey	
+Device.WiFi.AccessPoint.1.Security.KeyPassphrase	
+Device.WiFi.AccessPoint.1.AssociatedDevice.1.MACAddress	None
+Device.WiFi.AccessPoint.1.AssociatedDevice.1.OperatingStandard	None
+Device.WiFi.AccessPoint.1.AssociatedDevice.1.AuthenticationState	None
+Device.WiFi.AccessPoint.1.AssociatedDevice.1.LastDataDownlinkRate	None
+Device.WiFi.AccessPoint.1.AssociatedDevice.1.LastDataUplinkRate	None
+Device.WiFi.AccessPoint.1.AssociatedDevice.1.AssociationTime	None
+Device.WiFi.AccessPoint.1.AssociatedDevice.1.SignalStrength	None
+Device.WiFi.AccessPoint.1.AssociatedDevice.1.Active	None
+Device.IP.Diagnostics.IPPing.DiagnosticsState	None
+Device.IP.Diagnostics.IPPing.Host	
+Device.IP.Diagnostics.IPPing.NumberOfRepetitions	3
+Device.IP.Diagnostics.IPPing.Timeout	1000
+Device.IP.Diagnostics.IPPing.DataBlockSize	64
+Device.IP.Diagnostics.IPPing.SuccessCount	0
+Device.IP.Diagnostics.IPPing.FailureCount	0
+Device.IP.Diagnostics.IPPing.AverageResponseTime	0
+Device.IP.Diagnostics.IPPing.MinimumResponseTime	0
+Device.IP.Diagnostics.IPPing.MaximumResponseTime	0
+Device.IP.Interface.1.Enable	True
+Device.IP.Interface.1.Status	None
+Device.IP.Interface.1.Name	loopback
+Device.IP.Interface.1.Type	Loopback
+Device.IP.Interface.1.IPv4AddressNumberOfEntries	1
+Device.IP.Interface.1.IPv4Address.1.IPAddress	127.0.0.1
+Device.IP.Interface.1.IPv4Address.1.AddressingType	Static
+Device.IP.Interface.1.IPv4Address.1.Enable	True
+Device.IP.Interface.1.IPv4Address.1.Status	None
+Device.IP.Interface.1.IPv4Address.1.SubnetMask	255.0.0.0
+Device.IP.Interface.1.Stats.BytesSent	7709
+Device.IP.Interface.1.Stats.BytesReceived	7709
+Device.IP.Interface.1.Stats.PacketsSent	81
+Device.IP.Interface.1.Stats.PacketsReceived	81
+Device.IP.Interface.1.Stats.ErrorsSent	0
+Device.IP.Interface.1.Stats.ErrorsReceived	0
+Device.IP.Interface.1.Stats.DiscardPacketsSent	0
+Device.IP.Interface.1.Stats.DiscardPacketsReceived	0
+Device.UserInterface.RemoteAccess.Enable	False
+Device.UserInterface.RemoteAccess.Port	443
+Device.UserInterface.RemoteAccess.Protocal	HTTPS
+Device.UserInterface.RemoteAccess.SupportedProtocal	HTTPS
+Device.User.User.1.Enable	True
+Device.User.User.1.Password	********
+Device.User.User.1.RemoteAccessCapable	True
+Device.User.User.1.Username	admin
+Device.DeviceInfo.SpecVersion	1.0
+Device.DeviceInfo.ProvisioningCode	
+Device.DeviceInfo.Manufacturer	Ignition Design Labs Inc.
+Device.DeviceInfo.ManufacturerOUI	0078cd
+Device.DeviceInfo.ProductClass	Portal
+Device.DeviceInfo.ModelName	Portal
+Device.DeviceInfo.ModelNumber	SAP102
+Device.DeviceInfo.SerialNumber	0078CD025CE8
+Device.DeviceInfo.HardwareVersion	013
+Device.DeviceInfo.SoftwareVersion	3.18.19_saturn-1.4.258_prod-1.102.249
+Device.DeviceInfo.DeviceCategory	WiFi AP Router
+Device.DeviceInfo.Description	Portal Smart WiFi Router
+Device.DeviceInfo.UpTime	1322
+Device.DeviceInfo.DeviceLog	
+Device.DeviceInfo.MemoryStatus.Total	126040
+Device.DeviceInfo.MemoryStatus.Free	46608

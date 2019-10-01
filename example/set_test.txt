@@ -1,0 +1,3 @@
+Device.DHCPv4.Server.Pool.1.LeaseTime=86402
+Device.ManagementServer.PeriodicInformInterval=132
+Device.WiFi.SSID.1.SSID=deletedTest

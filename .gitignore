@@ -1,0 +1,6 @@
+.project
+.pydevproject
+.settings
+genieApplication/__pycache__
+genieLibrary/__pycache__
+
