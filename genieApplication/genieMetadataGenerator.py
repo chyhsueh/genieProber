@@ -9,11 +9,19 @@ from genieLibrary import fileStubs, parserStubs, commonVariables
 
 if __name__ == '__main__':
 
-    if len(sys.argv) < 2 or len(sys.argv) > 3 or not os.path.isdir(sys.argv[2]):
-        print('Usage:\tpython3.7 -m genieApplication.genieMetadataGenerator [IMPORT_PATH (easycwmp function source code)] [EXPORTFILE (default =', commonVariables.DEFAULT_DATA_ELEMENT_FILE_PATH_POSIX , ')]', file=sys.stderr)
+    print(sys.argv)
+
+    if len(sys.argv) < 2 or len(sys.argv) > 3 or not os.path.isdir(sys.argv[1]) :
+        if sys.platform != 'win32' :
+            print('Usage:\tpython3.7 -m genieApplication.genieMetadataGenerator [IMPORT_PATH (easycwmp function source code)] [EXPORTFILE (default =', commonVariables.DEFAULT_DATA_ELEMENT_FILE_PATH_POSIX , ')]', file=sys.stderr)
+        else :
+            print('Usage:\tpython -m genieApplication.genieMetadataGenerator [IMPORT_PATH (easycwmp function source code)] [EXPORTFILE (default =', commonVariables.DEFAULT_DATA_ELEMENT_FILE_PATH_WINDOWS , ')]', file=sys.stderr)
         sys.exit(1)
     
-    exportPath = commonVariables.DEFAULT_DATA_ELEMENT_FILE_PATH_POSIX
+    if sys.platform != 'win32' :
+        exportPath = commonVariables.DEFAULT_DATA_ELEMENT_FILE_PATH_POSIX
+    else :
+        exportPath = commonVariables.DEFAULT_DATA_ELEMENT_FILE_PATH_WINDOWS
     
     if len(sys.argv) == 3 :
         exportPath = sys.argv[2]

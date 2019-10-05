@@ -14,15 +14,19 @@ if __name__ == '__main__':
     
     deviceList = []
     
-    if sys.argv == 1 :
+    if len(sys.argv) == 1 :
         results_01, deviceList = genieStubs.getAllDeviceList()
-#        print(results_01)
+        print(results_01)
+        print(deviceList)
     else :        
         if sys.argv[1] == '--help' :
             print('Usage:\tpython3.7 -m genieApplication.genieGet [--help|deviceIDList(using \",\" for separate)]', file=sys.stderr)
             print('**** Prerequest: Please install the requests and dpath package from pip:', file=sys.stderr)
             print('\t# pip3 install --upgrade pip requests dpath', file=sys.stderr)
-            print('**** ConfigFile: by default, the data elements for value get will be defined in', commonVariables.DEFAULT_DATA_ELEMENT_FILE_PATH_POSIX, file=sys.stderr)
+            if sys.platform != 'win32' :
+                print('**** ConfigFile: by default, the data elements for value get will be defined in', commonVariables.DEFAULT_DATA_ELEMENT_FILE_PATH_POSIX, file=sys.stderr)
+            else :
+                print('**** ConfigFile: by default, the data elements for value get will be defined in', commonVariables.DEFAULT_DATA_ELEMENT_FILE_PATH_WINDOWS, file=sys.stderr)
             print('**** TODO: Supporting for remote genieACS. Currently only the localhost is supported.', file=sys.stderr)
             sys.exit(1)
         else :
@@ -31,7 +35,10 @@ if __name__ == '__main__':
                 deviceList.remove('')
 #    print(deviceList)
     
-    results_02, elementList, elementDetailed = genieStubs.getAllElementsListFromFile()
+    if sys.platform != 'win32' :
+        results_02, elementList, elementDetailed = genieStubs.getAllElementsListFromFile()
+    else :
+        results_02, elementList, elementDetailed = genieStubs.getAllElementsListFromFile(genieFrom=commonVariables.DEFAULT_DATA_ELEMENT_FILE_PATH_WINDOWS)
 #    print(results_02)
     print(elementList)
     print(elementDetailed)
@@ -63,7 +70,10 @@ if __name__ == '__main__':
                     else :
                         blankDict.update({ curr_items : ''})
 #
-            rootDir = commonVariables.DEFAULT_DATA_ELEMENT_REPORT_PATH_POSIX
+            if sys.platform != 'win32' :
+                rootDir = commonVariables.DEFAULT_DATA_ELEMENT_REPORT_PATH_POSIX
+            else :
+                rootDir = commonVariables.DEFAULT_DATA_ELEMENT_REPORT_PATH_WINDOWS
             
             if rootDir[-1] != os.sep :
                 rootDir += os.sep
