@@ -11,23 +11,41 @@ if __name__ == '__main__':
 #    print(len(sys.argv))
     
     if len(sys.argv) <= 2 :
-        print('Usage:\tpython3.7 -m genieApplication.genieSet [deviceIDList(using \",\" for separate)] [data_element=Value]xN ...', file=sys.stderr)
+        print('Usage:\tpython3.7 -m genieApplication.genieSet [MACAddressList(using \",\" for separate)] [data_element=Value]xN ...', file=sys.stderr)
         print('**** Prerequest: Please install the requests and dpath package from pip:', file=sys.stderr)
         print('\t# pip3 install --upgrade pip requests dpath', file=sys.stderr)
         print('**** TODO: Supporting for remote genieACS. Currently only the localhost is supported.', file=sys.stderr)
         sys.exit(1)
     else :
+
+        deviceDict = {}
+        deviceList = []
+
+        results_00, deviceDict = genieStubs.getAllDeviceList()
+        print(results_00)
+        print(deviceDict)
         
         whole_value_list = []
         
-        deviceList = sys.argv[1].split(',')
-        if '' in deviceList :
-            deviceList.remove('')
+#
+        mac_List = sys.argv[1].split(',')
+        if '' in mac_List :
+            mac_List.remove('')
+                
+        for mac_items in mac_List :
+            if mac_items in deviceDict :
+                deviceList.append(deviceDict[mac_items])
+
+        print('OK. I will do genieGet on the following devices:')
+    
+        for its in deviceList :
+            print('\t', its)
+#
         
         for idx in range(2, len(sys.argv)) :
             curr_pair = sys.argv[idx].split('=')
             if len(curr_pair) != 2 or '' in curr_pair:
-                print('Usage:\tpython3.7 -m genieApplication.genieSet [deviceIDList(using \",\" for separate)] [data_element=Value]xN ...', file=sys.stderr)
+                print('Usage:\tpython3.7 -m genieApplication.genieSet [MACAddressList(using \",\" for separate)] [data_element=Value]xN ...', file=sys.stderr)
                 sys.exit(2)
             else :
                 whole_value_list.append(curr_pair)

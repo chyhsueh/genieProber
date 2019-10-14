@@ -13,18 +13,39 @@ if __name__ == '__main__':
 #    print(sys.argv)
     
     if len(sys.argv) < 3 or not os.path.isfile(sys.argv[2]) :
-        print('Usage:\tpython3.7 -m genieApplication.genieBatchSet [deviceIDList(using \",\" for separate)] [IMPORT_FILE]', file=sys.stderr)
+        print('Usage:\tpython3.7 -m genieApplication.genieBatchSet [MACAddressList(using \",\" for separate)] [IMPORT_FILE]', file=sys.stderr)
         print('**** Prerequest: Please PREPARE the IMPORT_FILE for batch setting the data elements into specific CPEs.', file=sys.stderr)
         print('**** The format would be: \"DATA_ELEMENT=VALUE\" in each line of the file.', file=sys.stderr)
         sys.exit(1)
     else :
+
+        deviceDict = {}
+        deviceList = []
+
+        results_00, deviceDict = genieStubs.getAllDeviceList()
+        print(results_00)
+        print(deviceDict)
+
         
         whole_value_list = []
         
-        deviceList = sys.argv[1].split(',')
-        if '' in deviceList :
-            deviceList.remove('')
+#        deviceList = sys.argv[1].split(',')
+#        if '' in deviceList :
+#            deviceList.remove('')
+#
+        mac_List = sys.argv[1].split(',')
+        if '' in mac_List :
+            mac_List.remove('')
+                
+        for mac_items in mac_List :
+            if mac_items in deviceDict :
+                deviceList.append(deviceDict[mac_items])
 
+        print('OK. I will do genieGet on the following devices:')
+    
+        for its in deviceList :
+            print('\t', its)
+#
         with open(sys.argv[2], 'r') as f :
             curr_str = f.readline()
             elementList = []

@@ -12,15 +12,22 @@ if __name__ == '__main__':
     
 #    print('Length of sys.argv =', len(sys.argv))
     
+    deviceDict = {}
     deviceList = []
+
+    results_01, deviceDict = genieStubs.getAllDeviceList()
+    print(results_01)
+    print(deviceDict)
     
     if len(sys.argv) == 1 :
-        results_01, deviceList = genieStubs.getAllDeviceList()
-        print(results_01)
-        print(deviceList)
+        
+        for items in deviceDict.values() :
+            if items not in deviceList :
+                deviceList.append(items)
+        
     else :        
         if sys.argv[1] == '--help' :
-            print('Usage:\tpython3.7 -m genieApplication.genieGet [--help|deviceIDList(using \",\" for separate)]', file=sys.stderr)
+            print('Usage:\tpython3.7 -m genieApplication.genieGet [--help|MACAddressList(using \",\" for separate)]', file=sys.stderr)
             print('**** Prerequest: Please install the requests and dpath package from pip:', file=sys.stderr)
             print('\t# pip3 install --upgrade pip requests dpath', file=sys.stderr)
             if sys.platform != 'win32' :
@@ -30,18 +37,25 @@ if __name__ == '__main__':
             print('**** TODO: Supporting for remote genieACS. Currently only the localhost is supported.', file=sys.stderr)
             sys.exit(1)
         else :
-            deviceList = sys.argv[1].split(',')
-            if '' in deviceList :
-                deviceList.remove('')
-#    print(deviceList)
+            mac_List = sys.argv[1].split(',')
+            if '' in mac_List :
+                mac_List.remove('')
+                
+            for mac_items in mac_List :
+                if mac_items in deviceDict :
+                    deviceList.append(deviceDict[mac_items])
+    print('OK. I will do genieGet on the following devices:')
+    
+    for its in deviceList :
+        print('\t', its)
     
     if sys.platform != 'win32' :
         results_02, elementList, elementDetailed = genieStubs.getAllElementsListFromFile()
     else :
         results_02, elementList, elementDetailed = genieStubs.getAllElementsListFromFile(genieFrom=commonVariables.DEFAULT_DATA_ELEMENT_FILE_PATH_WINDOWS)
 #    print(results_02)
-    print(elementList)
-    print(elementDetailed)
+#    print(elementList)
+#    print(elementDetailed)
 
 #    elementList_str = repr(elementList).replace('\'', '\"')
 
@@ -50,9 +64,9 @@ if __name__ == '__main__':
     results_03, valueResult = genieStubs.getParameterValues(deviceList=deviceList, valueList=elementList)
 #    print(results_03)
 #    print(valueResult)
-    
+
     results_04, valueReturned = genieStubs.queryParameterValues(deviceList=deviceList, valueList=elementList)
-    print('The returning of genieStubs.queryParameterValues =', results_04)
+#    print('The returning of genieStubs.queryParameterValues =', results_04)
 #    print('The query results from database (for verification) =', valueReturned)
 
     for items in valueReturned :

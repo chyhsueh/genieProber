@@ -12,7 +12,7 @@ def getAllDeviceList(genieSERVERIP=commonVariables.DEFAULT_SERVERIP, geniePort=c
     '''
     getAllDeviceList: Given URL and Port of genieACS, retrieving the list of all devices. To avoid endless trial, a timeout (in seconds) can be set for HTTP connection.
     '''
-    deviceList = []
+    deviceList = {}
     devicegetURL = 'http://' + genieSERVERIP + ':' + geniePort + '/devices/'
 
     resultinfo = commonVariables.DEFAULT_MESSAGE_OK
@@ -22,16 +22,42 @@ def getAllDeviceList(genieSERVERIP=commonVariables.DEFAULT_SERVERIP, geniePort=c
         
         if rawData.status_code != 200 :
             resultinfo = str(rawData.status_code)
-            deviceList = []
+            deviceList = {}
         else :
             rawDevices = rawData.json()
     
             for items in rawDevices :
-#                print(items['_id'])
-                deviceList.append(items['_id'])
+                have_mac = False
+#                print('id =', items['_id'])
+                if 'Ethernet' in items['Device'] :
+                    for curr_mac in items['Device']['Ethernet']['Interface'] :
+#                        print('curr_mac =', curr_mac)
+                        if curr_mac[0] != '_' :
+                            if 'MACAddress' in items['Device']['Ethernet']['Interface'][curr_mac] :
+#                                print('eth =', items['Device']['Ethernet']['Interface'][curr_mac]['MACAddress']['_value'])
+                                deviceList.update({items['Device']['Ethernet']['Interface'][curr_mac]['MACAddress']['_value'] : items['_id']})
+                                have_mac = True
+                            else :
+                                pass
+                        else :
+                            pass
+                else :
+                    pass
+                
+                if not have_mac :
+                    #    No MACAddressed found in Device schema. Applying the SerialNumber
+#                    print(items['Device']['DeviceInfo']['SerialNumber']['_value'])
+                    sn_str = items['Device']['DeviceInfo']['SerialNumber']['_value']
+                    sn_str = sn_str[:2] + ':' + sn_str[2:]
+                    sn_str = sn_str[:5] + ':' + sn_str[5:]
+                    sn_str = sn_str[:8] + ':' + sn_str[8:]
+                    sn_str = sn_str[:11] + ':' + sn_str[11:]
+                    sn_str = sn_str[:14] + ':' + sn_str[14:]
+                    deviceList.update({sn_str : items['_id']})
+#                deviceList.append(items['_id'])
 
     except BaseException as e :
-        deviceList = []
+        deviceList = {}
         resultinfo = str(e)
     else :
         pass
@@ -128,8 +154,9 @@ def queryParameterValues(deviceList, valueList, genieSERVERIP=commonVariables.DE
             current_returned_pairs = {}
             valuegetURL = 'http://' + genieSERVERIP + ':' + geniePort + '/devices?query=%7B%22_id%22%3A%22' + items + '%22%7D&projection=' + projectionStr
 #            print('projectionStr =', projectionStr)
+#            print('OK, valuegetURL =', valuegetURL)
             
-            try :            
+            try :     
                 rawData = requests.get(valuegetURL, timeout=genieTimeout)
 #                print(rawData.text)
                 if rawData.status_code != 200 :
