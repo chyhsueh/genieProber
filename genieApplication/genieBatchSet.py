@@ -5,7 +5,8 @@
 
 import sys
 import os
-from genieLibrary import genieStubs
+from genieLibrary import genieStubs, fileStubs, commonVariables
+from genieTypes.genieServer import genieACSServer
 
 if __name__ == '__main__':
     
@@ -19,13 +20,17 @@ if __name__ == '__main__':
         sys.exit(1)
     else :
 
+        if sys.platform != 'win32' :
+            results_0A, serverInstance = fileStubs.configReader(commonVariables.DEFAULT_CONFIG_FILE_PATH_POSIX)
+        else :
+            results_0A, serverInstance = fileStubs.configReader(commonVariables.DEFAULT_CONFIG_FILE_PATH_WINDOWS)
+
         deviceDict = {}
         deviceList = []
 
-        results_00, deviceDict = genieStubs.getAllDeviceList()
+        results_00, deviceDict = genieStubs.getAllDeviceList(genieSERVERIP=serverInstance.serverIP, geniePort=str(serverInstance.serverPort), genieTimeout=serverInstance.serverTimeout)
         print(results_00)
         print(deviceDict)
-
         
         whole_value_list = []
         
@@ -58,7 +63,7 @@ if __name__ == '__main__':
 #        print(deviceList)
 #        print(whole_value_list)
         
-        ret_info, status_dict, elementList = genieStubs.setParameterValues(deviceList, whole_value_list)
+        ret_info, status_dict, elementList = genieStubs.setParameterValues(deviceList, whole_value_list, genieSERVERIP=serverInstance.serverIP, geniePort=str(serverInstance.serverPort), genieTimeout=serverInstance.serverTimeout, genieConnectionRequest=True)
         
 #        print('The returning of genieStubs.setParameterValues = ', ret_info)
 #        print('The status code of webAPI execution (genieStubs.setParameterValues) =', status_dict)
@@ -73,7 +78,7 @@ if __name__ == '__main__':
         
 #        print('The updated data model elements =', elementList)
 
-        results_04, valueReturned = genieStubs.queryParameterValues(deviceList=deviceList, valueList=elementList)
+        results_04, valueReturned = genieStubs.queryParameterValues(deviceList=deviceList, valueList=elementList, genieSERVERIP=serverInstance.serverIP, geniePort=str(serverInstance.serverPort), genieTimeout=serverInstance.serverTimeout)
 #        print('The returning of genieStubs.queryParameterValues =', results_04)
 #        print('The query results from database (for verification) =', valueReturned)
         print('The query results from database (for verification) =')

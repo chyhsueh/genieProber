@@ -7,15 +7,19 @@ import os
 import time
 
 from genieLibrary import genieStubs, commonVariables, fileStubs, parserStubs
+from genieTypes.genieServer import genieACSServer
 
 if __name__ == '__main__':
     
-#    print('Length of sys.argv =', len(sys.argv))
+    if sys.platform != 'win32' :
+        results_00, serverInstance = fileStubs.configReader(commonVariables.DEFAULT_CONFIG_FILE_PATH_POSIX)
+    else :
+        results_00, serverInstance = fileStubs.configReader(commonVariables.DEFAULT_CONFIG_FILE_PATH_WINDOWS)
     
     deviceDict = {}
     deviceList = []
 
-    results_01, deviceDict = genieStubs.getAllDeviceList()
+    results_01, deviceDict = genieStubs.getAllDeviceList(genieSERVERIP=serverInstance.serverIP, geniePort=str(serverInstance.serverPort), genieTimeout=serverInstance.serverTimeout)
     print(results_01)
     print(deviceDict)
     
@@ -61,11 +65,11 @@ if __name__ == '__main__':
 
 #    print('elementList_str =', elementList_str)
 
-    results_03, valueResult = genieStubs.getParameterValues(deviceList=deviceList, valueList=elementList)
+    results_03, valueResult = genieStubs.getParameterValues(deviceList=deviceList, valueList=elementList, genieSERVERIP=serverInstance.serverIP, geniePort=str(serverInstance.serverPort), genieTimeout=serverInstance.serverTimeout, genieConnectionRequest=True)
 #    print(results_03)
 #    print(valueResult)
 
-    results_04, valueReturned = genieStubs.queryParameterValues(deviceList=deviceList, valueList=elementList)
+    results_04, valueReturned = genieStubs.queryParameterValues(deviceList=deviceList, valueList=elementList, genieSERVERIP=serverInstance.serverIP, geniePort=str(serverInstance.serverPort), genieTimeout=serverInstance.serverTimeout)
 #    print('The returning of genieStubs.queryParameterValues =', results_04)
 #    print('The query results from database (for verification) =', valueReturned)
 

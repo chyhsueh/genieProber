@@ -16,6 +16,7 @@ sudo apt-get install -y python3.7 python3-pip
 sudo python3.7 -m pip install --upgrade pip requests dpath
 
 sudo cp -v ./conf/data_element.txt /home
+sudo cp -v ./conf/setting.conf.txt /home
 
 echo -e "\n\033[45m[INFO]\tInstallation Completed. I have a brief demo of how I can do:\033[m\n"
 

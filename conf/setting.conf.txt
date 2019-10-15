@@ -1,5 +1,7 @@
-﻿SERVERIP	127.0.0.1
+﻿##########################################
+SERVERIP	127.0.0.1
 SERVERPORT	7557
 HTTPTIMEOUT	5000
 ROOT_POSIX	/home/
 ROOT_WIN	D:\
+##########################################

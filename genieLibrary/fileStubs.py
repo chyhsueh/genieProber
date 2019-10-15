@@ -4,7 +4,44 @@
 '''
 
 import os
+import sys
 from genieLibrary import commonVariables
+from genieTypes.genieServer import genieACSServer
+
+def configReader(configPath):
+    resultinfo, multiList = importCSVToMultiDimensionalList(configPath)
+    
+#    print(multiList)
+    
+    if resultinfo != commonVariables.DEFAULT_MESSAGE_OK :
+        serverInstance = genieACSServer() 
+    else :
+        serverIP = None
+        serverPort = None
+        serverTimeout = None
+        serverRoot = None
+    
+        for items in multiList :
+            if len(items) < 2 :
+                pass
+            elif items[0][0] == '#' :
+                pass
+            elif items[0] == 'SERVERIP' :
+                serverIP = items[1]
+            elif items[0] == 'SERVERPORT' :
+                serverPort = int(items[1])
+            elif items[0] == 'HTTPTIMEOUT' :
+                serverTimeout = int(items[1])
+            elif items[0] == 'ROOT_POSIX' and sys.platform != 'win32' :
+                serverRoot = items[1]
+            elif items[0] == 'ROOT_WIN' and sys.platform == 'win32' :
+                serverRoot = items[1]
+            else :
+                pass
+    
+        serverInstance = genieACSServer(serverIP=serverIP, serverPort=serverPort, serverTimeout=serverTimeout, localRoot=serverRoot)
+    
+    return resultinfo, serverInstance
 
 def findAllFilesFromDir(rootPath):
     '''
