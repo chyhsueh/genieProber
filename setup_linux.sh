@@ -37,9 +37,14 @@ echo -e "\n[INFO]\t\033[33mpython3.7 -m genieApplication.genieBatchSet 0078cd-my
 echo -e "\n\033[44m[INFO]\t========== genieApplication.genieGet Example ==========\033[m\n"
 
 echo -e "\n[INFO]\t\033[33mpython3.7 -m genieApplication.genieGet 0078cd-myPortal-0078CD025CE8,0078cd-myPortal-0078CD025CE9\033[m"
+
+echo -e "\n[INFO]\tThe default setting config for servers can be found at \033[32m/home/setting.conf.txt\033[m\n" 
+
 echo -e "\n[INFO]\tThe default data element config for genieGet can be found at \033[32m/home/data_element.txt\033[m\n"
 
 #python3.7 -m genieApplication.genieSet
+
+echo -e "\n[INFO]\tThe installation is DONE. Bye!\n"
 
 exit 0
 
